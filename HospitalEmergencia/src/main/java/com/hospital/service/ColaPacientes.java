@@ -1,4 +1,4 @@
-
+//Clase que agrega pacientes y los quita de la cola
 package com.hospital.service;
 
 import com.hospital.model.*;
