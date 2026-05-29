@@ -1,25 +1,75 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.hospital</groupId>
-    <artifactId>HospitalEmergencia</artifactId>
+<artifactId>HospitalEmergencia</artifactId>
+
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>24</maven.compiler.release>
-        <exec.mainClass>com.hospital.HospitalEmergencia</exec.mainClass>
+
+        <project.build.sourceEncoding>
+            UTF-8
+        </project.build.sourceEncoding>
+
+        <maven.compiler.release>
+            21
+        </maven.compiler.release>
+
     </properties>
+
     <dependencies>
 
-    <dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>21</version>
+        </dependency>
 
-        <groupId>mysql</groupId>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>21</version>
+        </dependency>
 
-        <artifactId>mysql-connector-java</artifactId>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
 
-        <version>8.0.33</version>
+    </dependencies>
 
-    </dependency>
-</dependencies>
+    <build>
+
+        <plugins>
+
+            <plugin>
+
+                <groupId>org.openjfx</groupId>
+
+                <artifactId>javafx-maven-plugin</artifactId>
+
+                <version>0.0.8</version>
+
+                <configuration>
+
+                    <mainClass>
+                        com.hospital.HospitalEmergencia
+                    </mainClass>
+
+                </configuration>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
 </project>

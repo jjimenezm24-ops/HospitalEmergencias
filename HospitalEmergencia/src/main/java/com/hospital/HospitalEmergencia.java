@@ -1,16 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.hospital;
 
-/**
- *
- * @author HP
- */
-public class HospitalEmergencia {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class HospitalEmergencia extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        Parent root = FXMLLoader.load(
+                getClass().getResource(
+                        "/com/hospital/main.fxml"
+                )
+        );
+
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Hospital Emergencias");
+
+        stage.setScene(scene);
+
+        stage.show();
+    }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+        launch(args);
     }
 }

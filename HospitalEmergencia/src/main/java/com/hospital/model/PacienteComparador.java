@@ -1,15 +1,15 @@
-
 package com.hospital.model;
 
 import java.util.Comparator;
-public class PacienteComparador {
-implements Comparador<Paciente> {
+
+public class PacienteComparador
+        implements Comparator<Paciente> {
 
     @Override
-    public int comparar(Paciente p1, Paciente p2) {
+    public int compare(Paciente p1, Paciente p2) {
 
         int prioridad =
-                p1.getPrioridad().compararTo(
+                p1.getPrioridad().compareTo(
                         p2.getPrioridad()
                 );
 
@@ -24,6 +24,3 @@ implements Comparador<Paciente> {
         return prioridad;
     }
 }
-    
-        
-    }
