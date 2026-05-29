@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hospital.controller.MainController">
+
+    <TextField
+            fx:id="txtNombre"
+            promptText="Nombre"/>
+
+    <TextField
+            fx:id="txtEdad"
+            promptText="Edad"/>
+
+    <TextField
+            fx:id="txtDpi"
+            promptText="DPI"/>
+
+    <TextArea
+            fx:id="txtSintomas"
+            promptText="Síntomas"/>
+
+    <ComboBox
+            fx:id="comboPrioridad"/>
+
+    <Button
+            text="Registrar Paciente"
+            onAction="#registrarPaciente"/>
+
+    <Button
+            text="Atender Siguiente"
+            onAction="#atenderPaciente"/>
+
+    <TextArea
+            fx:id="areaPacientes"/>
+
+</VBox>

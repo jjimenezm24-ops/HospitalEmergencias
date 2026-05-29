@@ -9,7 +9,7 @@ public class ColaPacientes {
     public ColaPacientes() {
 
         cola = new PriorityQueue<>(
-                new PacienteComparator()
+                new PacienteComparador()
         );
     }
 

@@ -36,10 +36,10 @@ public class MainController {
     public void initialize() {
 
         comboPrioridad.getItems().addAll(
-                Prioridad.CRITICAL,
-                Prioridad.HIGH,
-                Prioridad.MEDIUM,
-                Prioridad.LOW
+                Prioridad.Critico,
+                Prioridad.Grave,
+                Prioridad.Medio,
+                Prioridad.Leve
         );
     }
 
