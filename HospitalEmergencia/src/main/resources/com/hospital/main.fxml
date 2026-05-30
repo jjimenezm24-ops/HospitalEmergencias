@@ -1,40 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 
 <VBox spacing="10"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.hospital.controller.MainController">
+      fx:controller="com.hospital.controller.MainController"
+      stylesheets="@style.css">
 
-    <TextField
-            fx:id="txtNombre"
-            promptText="Nombre"/>
+    <padding>
+        <Insets top="20"
+                right="20"
+                bottom="20"
+                left="20"/>
+    </padding>
 
-    <TextField
-            fx:id="txtEdad"
-            promptText="Edad"/>
+    <Label text="Hospital Emergencias"
+           styleClass="titulo"/>
 
-    <TextField
-            fx:id="txtDpi"
-            promptText="DPI"/>
+    <TextField fx:id="txtNombre"
+               promptText="Nombre"/>
 
-    <TextArea
-            fx:id="txtSintomas"
-            promptText="Síntomas"/>
+    <TextField fx:id="txtEdad"
+               promptText="Edad"/>
 
-    <ComboBox
-            fx:id="comboPrioridad"/>
+    <TextField fx:id="txtDpi"
+               promptText="DPI"/>
 
-    <Button
-            text="Registrar Paciente"
-            onAction="#registrarPaciente"/>
+    <TextArea fx:id="txtSintomas"
+              promptText="Síntomas"/>
 
-    <Button
-            text="Atender Siguiente"
-            onAction="#atenderPaciente"/>
+    <ComboBox fx:id="comboPrioridad"/>
 
-    <TextArea
-            fx:id="areaPacientes"/>
+    <HBox spacing="10">
+
+        <Button text="Registrar Paciente"
+                onAction="#registrarPaciente"/>
+
+        <Button text="Atender Siguiente"
+                onAction="#atenderPaciente"/>
+
+    </HBox>
+
+    <TableView fx:id="tablaPacientes">
+
+        <columns>
+
+            <TableColumn fx:id="colNombre"
+                         text="Nombre"/>
+
+            <TableColumn fx:id="colPrioridad"
+                         text="Prioridad"/>
+
+            <TableColumn fx:id="colHora"
+                         text="Hora"/>
+
+        </columns>
+
+    </TableView>
 
 </VBox>
