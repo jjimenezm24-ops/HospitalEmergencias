@@ -1,13 +1,20 @@
-
 package com.hospital.controller;
 
-import com.hospital.model.Paciente;
-import com.hospital.model.Prioridad;
 import com.hospital.dao.PacienteDAO;
+import com.hospital.model.*;
 import com.hospital.service.ColaPacientes;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
+
 import javafx.scene.control.*;
+
+import javafx.scene.control.cell.PropertyValueFactory;
+
 public class MainController {
+
     @FXML
     private TextField txtNombre;
 
@@ -24,7 +31,19 @@ public class MainController {
     private ComboBox<Prioridad> comboPrioridad;
 
     @FXML
-    private TextArea areaPacientes;
+    private TableView<Paciente> tablaPacientes;
+
+    @FXML
+    private TableColumn<Paciente, String> colNombre;
+
+    @FXML
+    private TableColumn<Paciente, String> colPrioridad;
+
+    @FXML
+    private TableColumn<Paciente, String> colHora;
+
+    private ObservableList<Paciente> lista =
+            FXCollections.observableArrayList();
 
     private ColaPacientes cola =
             new ColaPacientes();
@@ -41,6 +60,20 @@ public class MainController {
                 Prioridad.Medio,
                 Prioridad.Leve
         );
+
+        colNombre.setCellValueFactory(
+                new PropertyValueFactory<>("nombre")
+        );
+
+        colPrioridad.setCellValueFactory(
+                new PropertyValueFactory<>("prioridad")
+        );
+
+        colHora.setCellValueFactory(
+                new PropertyValueFactory<>("horaIngreso")
+        );
+
+        tablaPacientes.setItems(lista);
     }
 
     @FXML
@@ -65,7 +98,9 @@ public class MainController {
 
         dao.guardarPaciente(p);
 
-        actualizarLista();
+        lista.add(p);
+
+        limpiarCampos();
     }
 
     @FXML
@@ -76,27 +111,34 @@ public class MainController {
 
         if (p != null) {
 
-            areaPacientes.appendText(
-                    "\nAtendido: "
+            lista.remove(p);
+
+            Alert alert =
+                    new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("Paciente");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText(
+                    "Atendido: "
                             + p.getNombre()
             );
-        }
 
-        actualizarLista();
+            alert.showAndWait();
+        }
     }
 
-    private void actualizarLista() {
+    private void limpiarCampos() {
 
-        areaPacientes.clear();
+        txtNombre.clear();
 
-        for (Paciente p : cola.getCola()) {
+        txtEdad.clear();
 
-            areaPacientes.appendText(
-                    p.getNombre()
-                            + " - "
-                            + p.getPrioridad()
-                            + "\n"
-            );
-        }
+        txtDpi.clear();
+
+        txtSintomas.clear();
+
+        comboPrioridad.setValue(null);
     }
 }
