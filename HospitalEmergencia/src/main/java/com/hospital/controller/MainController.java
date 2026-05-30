@@ -4,6 +4,8 @@ import com.hospital.dao.PacienteDAO;
 import com.hospital.model.*;
 import com.hospital.service.ColaPacientes;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -42,6 +44,9 @@ public class MainController {
     @FXML
     private TableColumn<Paciente, String> colHora;
 
+    @FXML
+    private TableColumn<Paciente, String> colEstado;
+
     private ObservableList<Paciente> lista =
             FXCollections.observableArrayList();
 
@@ -73,7 +78,37 @@ public class MainController {
                 new PropertyValueFactory<>("horaIngreso")
         );
 
+        colEstado.setCellValueFactory(
+                cellData -> {
+
+                    if (
+                            cellData.getValue()
+                                    .isAtendido()
+                    ) {
+
+                        return new SimpleStringProperty(
+                                "Atendido"
+                        );
+                    }
+
+                    return new SimpleStringProperty(
+                            "Pendiente"
+                    );
+                }
+        );
+
         tablaPacientes.setItems(lista);
+
+        cargarPacientes();
+    }
+
+    private void cargarPacientes() {
+
+        lista.clear();
+
+        lista.addAll(
+                dao.obtenerPacientes()
+        );
     }
 
     @FXML
@@ -111,14 +146,26 @@ public class MainController {
 
         if (p != null) {
 
-            lista.remove(p);
+            p.setAtendido(true);
+
+            dao.marcarAtendido(
+                    p.getDpi()
+            );
+
+            tablaPacientes.refresh();
 
             Alert alert =
-                    new Alert(Alert.AlertType.INFORMATION);
+                    new Alert(
+                            Alert.AlertType.INFORMATION
+                    );
 
-            alert.setTitle("Paciente");
+            alert.setTitle(
+                    "Paciente"
+            );
 
-            alert.setHeaderText(null);
+            alert.setHeaderText(
+                    null
+            );
 
             alert.setContentText(
                     "Atendido: "

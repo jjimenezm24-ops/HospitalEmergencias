@@ -54,7 +54,8 @@
 
             <TableColumn fx:id="colHora"
                          text="Hora"/>
-
+            <TableColumn fx:id="colEstado"
+             text="Estado"/>                
         </columns>
 
     </TableView>

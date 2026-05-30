@@ -1,9 +1,10 @@
-
 package com.hospital.dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Conexion {
+
     private static final String URL =
             "jdbc:mysql://localhost:3306/hospital_db";
 
@@ -23,7 +24,9 @@ public class Conexion {
 
         } catch (Exception e) {
 
-            System.out.println(e.getMessage());
+            System.out.println(
+                    e.getMessage()
+            );
 
             return null;
         }

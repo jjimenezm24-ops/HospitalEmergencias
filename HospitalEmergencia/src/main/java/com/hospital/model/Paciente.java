@@ -1,8 +1,9 @@
-
 package com.hospital.model;
+
 import java.time.LocalDateTime;
 
 public class Paciente {
+
     private int id;
     private String nombre;
     private int edad;
@@ -10,6 +11,7 @@ public class Paciente {
     private String sintomas;
     private Prioridad prioridad;
     private LocalDateTime horaIngreso;
+    private boolean atendido;
 
     public Paciente(
             String nombre,
@@ -24,8 +26,8 @@ public class Paciente {
         this.dpi = dpi;
         this.sintomas = sintomas;
         this.prioridad = prioridad;
-
         this.horaIngreso = LocalDateTime.now();
+        this.atendido = false;
     }
 
     public String getNombre() {
@@ -50,5 +52,13 @@ public class Paciente {
 
     public LocalDateTime getHoraIngreso() {
         return horaIngreso;
+    }
+
+    public boolean isAtendido() {
+        return atendido;
+    }
+
+    public void setAtendido(boolean atendido) {
+        this.atendido = atendido;
     }
 }
